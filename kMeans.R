@@ -12,7 +12,7 @@ numOfPoints = dim(Xtrain)[1]
 centroids <- matrix(, k, numOfAtts)
 #usedPoints <- vector(mode="numeric", length=k)
 
-classifiers <- rep(0, numOfPoints)
+classifiers <- rep(1, numOfPoints)
 
 randInts = sample(1:numOfPoints, k)
 
@@ -24,21 +24,28 @@ for(i in 1:k){
 
 Xtrain <- cbind(Xtrain, Label=classifiers)
 
-initialClass <- function(rowVector){
+numOfAtts= dim(Xtrain)[2]
+
+euclidCompare <- function(row){
   
-  minClass = 1
+  #find euclid dist for this row foreach centroid
   
-  for(i in 2:k){
+  #if returned euclid is less than prior, assign newClass from passed index
+  
+  for(i in 1:k){
     
-    apply(m, 1, mean)
+    
     
   }
+  
   
 }
 
 
 
-euclidCalc <- function(row, centroid){
+euclidCalc <- function(row, centroid, oldClass){
+  
+  #calc euclid distance between centroid and row, if centroid[oldClass] distance is greater than new dist, assign 
   
   dist(rbind(row, centroid))
   
