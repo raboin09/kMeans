@@ -26,30 +26,30 @@ Xtrain <- cbind(Xtrain, Label=classifiers)
 
 numOfAtts= dim(Xtrain)[2]
 
-euclidCompare <- function(row){
+iterations = 0
+
+while(iterations < 20){
   
-  #find euclid dist for this row foreach centroid
-  
-  #if returned euclid is less than prior, assign newClass from passed index
-  
-  for(i in 1:k){
+  for(i in Xtrain){
     
-    
+    for(centroid in centroids){
+      
+      
+      
+    }
     
   }
   
+}
+
+
+euclidDist <- function(){
+  
+  
   
 }
 
 
-
-euclidCalc <- function(row, centroid, oldClass){
-  
-  #calc euclid distance between centroid and row, if centroid[oldClass] distance is greater than new dist, assign 
-  
-  dist(rbind(row, centroid))
-  
-}
 
 
 
