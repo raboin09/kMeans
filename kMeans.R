@@ -1,10 +1,12 @@
+library(matrixStats)
+
 setwd("C:/Users/raboi/Desktop/kMeans-master")
 
-trainingFile = "iris.txt"
+trainingFile = "twoCircles.txt"
 
 Xtrain = as.matrix(read.table(trainingFile))
 
-k = 3
+k = 2
 
 numOfAtts= dim(Xtrain)[2]
 numOfPoints = dim(Xtrain)[1]
@@ -27,7 +29,7 @@ numOfAtts= dim(Xtrain)[2]
 
 iterations = 0
 
-while(iterations < 10){
+while(iterations < 20){
   
   for(i in 1:numOfPoints){
     
@@ -42,12 +44,21 @@ while(iterations < 10){
     
   }
   
+  if(iterations>0){
+    for(t in 1:k){
+      centLabel = which(Xtrain[,numOfAtts] ==t)
+      centroids[t,] <- colMeans(Xtrain[centLabel,1:numOfAtts-1])
+    }
+  }
+  
   iterations = iterations+1
   
 }
 
 print(Xtrain)
+print(centroids)
 
-plot(Xtrain[,1:2], col=Xtrain[,numOfAtts], main = paste("Clusters of", fname), xlab = "Attribute 1", ylab = "Attribute 2")
+
+plot(Xtrain[,1:2], col=Xtrain[,numOfAtts], main = paste("Clusters of", trainingFile), xlab = "Attribute 1", ylab = "Attribute 2")
 
 
