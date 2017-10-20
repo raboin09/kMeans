@@ -1,4 +1,4 @@
-setwd("C:/Users/james.raboin/Desktop/kMeansDataset/")
+setwd("C:/Users/raboi/Desktop/kMeans-master")
 
 trainingFile = "iris.txt"
 
@@ -10,7 +10,6 @@ numOfAtts= dim(Xtrain)[2]
 numOfPoints = dim(Xtrain)[1]
 
 centroids <- matrix(, k, numOfAtts)
-#usedPoints <- vector(mode="numeric", length=k)
 
 classifiers <- rep(1, numOfPoints)
 
@@ -28,31 +27,27 @@ numOfAtts= dim(Xtrain)[2]
 
 iterations = 0
 
-while(iterations < 20){
+while(iterations < 10){
   
-  for(i in Xtrain){
+  for(i in 1:numOfPoints){
     
-    for(centroid in centroids){
-      
-      
+    for(j in 1:k){
+      former <- dist(rbind(Xtrain[i,1:numOfAtts-1],centroids[j,]))[1]
+      latter <- dist(rbind(Xtrain[i,1:numOfAtts-1],centroids[Xtrain[i,numOfAtts],]))[1]
+      if(former < latter){
+        Xtrain[i,numOfAtts] = j
+      }
       
     }
     
   }
   
-}
-
-
-euclidDist <- function(){
-  
-  
+  iterations = iterations+1
   
 }
 
+print(Xtrain)
 
-
-
-
-
+plot(Xtrain[,1:2], col=Xtrain[,numOfAtts], main = paste("Clusters of", fname), xlab = "Attribute 1", ylab = "Attribute 2")
 
 
